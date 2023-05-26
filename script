@@ -1,0 +1,42 @@
+\documentclass[a4paper]{article}
+\usepackage{geometry}
+\usepackage[backend=biber]{biblatex}  % Use o pacote biber para processar as referências
+\addbibresource{zoterol.bib}  % Substitua 'zoterol.bib' pelo nome do seu arquivo .bib
+
+% Definir um novo estilo de bibliografia que inclui os campos 'author', 'title', 'abstract', 'keywords' e 'date'
+\DeclareSortingTemplate{title}{
+  \sort{\field{title}}
+}
+
+\DeclareBibliographyDriver{article}{%
+  \textbf{Title:} \printfield{title}\newline
+  \textbf{Author:} \printnames{author}\newline
+  \textbf{Abstract:} \printfield{abstract}\newline
+  \iffieldundef{keywords}{}{\textbf{Keywords:} \printfield{keywords}\newline}
+  \iffieldundef{date}{}{\textbf{Date:} \printfield{date}\newline}
+  \finentry}
+
+\DeclareBibliographyDriver{inproceedings}{\usedriver{}{article}}
+\DeclareBibliographyDriver{thesis}{\usedriver{}{article}}
+\DeclareBibliographyDriver{misc}{\usedriver{}{article}}
+\DeclareBibliographyDriver{incollection}{\usedriver{}{article}}
+\DeclareBibliographyDriver{book}{\usedriver{}{article}}
+
+\title{Resumo dos Artigos}
+\date{}  % Remove a data padrão
+
+\begin{document}
+
+\maketitle  % Imprime o título da página
+
+\nocite{*}  % Citar todos os itens do arquivo .bib
+
+% Ordenação por título
+\printbibliography[title={Artigos}, type=article, sorting=title]
+\printbibliography[title={Trabalhos em Conferências}, type=inproceedings, sorting=title]
+\printbibliography[title={Teses}, type=thesis, sorting=title]
+\printbibliography[title={Miscelânea}, type=misc, sorting=title]
+\printbibliography[title={Capítulos de Livros}, type=incollection, sorting=title]
+\printbibliography[title={Livros}, type=book, sorting=title]
+
+\end{document}
