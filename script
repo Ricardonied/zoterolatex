@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \usepackage{geometry}
-\usepackage[backend=biber]{biblatex}  % Use o pacote biber para processar as referências
+\usepackage[backend=biber, defernumbers=true]{biblatex}  % Use o pacote biber para processar as referências
 \addbibresource{zoterol.bib}  % Substitua 'zoterol.bib' pelo nome do seu arquivo .bib
 
 % Definir um novo estilo de bibliografia que inclui os campos 'author', 'title', 'abstract', 'keywords' e 'date'
@@ -32,11 +32,13 @@
 \nocite{*}  % Citar todos os itens do arquivo .bib
 
 % Ordenação por título
-\printbibliography[title={Artigos}, type=article, sorting=title]
-\printbibliography[title={Trabalhos em Conferências}, type=inproceedings, sorting=title]
-\printbibliography[title={Teses}, type=thesis, sorting=title]
-\printbibliography[title={Miscelânea}, type=misc, sorting=title]
-\printbibliography[title={Capítulos de Livros}, type=incollection, sorting=title]
-\printbibliography[title={Livros}, type=book, sorting=title]
+\newrefcontext[sorting=none]
+\printbibliography[title={Artigos}, type=article]
+\printbibliography[title={Trabalhos em Conferências}, type=inproceedings]
+\printbibliography[title={Teses}, type=thesis]
+\printbibliography[title={Miscelânea}, type=misc]
+\printbibliography[title={Capítulos de Livros}, type=incollection]
+\printbibliography[title={Livros}, type=book]
 
 \end{document}
+
